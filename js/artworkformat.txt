@@ -1,0 +1,24 @@
+in Artworks.js ARTWORK DATABASE
+
+TO ADD A NEW ARTWORK:
+
+1. Put the image inside the correct folder.
+2. Copy one of the objects below.
+
+3. Change:
+   - title
+   - year
+   - category
+   - image
+   - description
+
+====================================================
+
+
+    {
+    title: "New Artwork",
+    year: "2026",
+    category: "digital",
+    image: "assets/artworks/digital/new-art.jpg",
+    description: "A short description of the artwork."
+    },

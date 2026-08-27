@@ -1,0 +1,2480 @@
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Archivo", Arial, sans-serif;
+    background: #f4f1e8;
+    color: #111;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* ==================================================
+   VARIABLES
+================================================== */
+
+:root {
+
+    --background: #f4f1e8;
+    --black: #111111;
+    --red: #e53935;
+    --yellow: #f4c430;
+    --blue: #1955d1;
+    --white: #ffffff;
+    --border: 2px solid #111;
+
+}
+
+
+/* ==================================================
+   TOP NAVIGATION
+================================================== */
+
+.topbar {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    mix-blend-mode: multiply;
+}
+
+.logo {
+
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.topbar nav {
+
+    display: flex;
+
+    gap: 30px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.topbar nav a {
+
+    position: relative;
+}
+
+.topbar nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -5px;
+
+    width: 0;
+
+    height: 2px;
+
+    background: var(--black);
+
+    transition: width .3s ease;
+}
+
+.topbar nav a:hover::after {
+
+    width: 100%;
+}
+
+
+/* ==================================================
+   SIDE CATEGORY NAVIGATION
+================================================== */
+
+.category-nav {
+
+    position: fixed;
+
+    left: 35px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 90;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.category-label {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    opacity: .5;
+}
+
+.category-link {
+
+    border: none;
+
+    background: transparent;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .5px;
+
+    opacity: .3;
+
+    transition: all .3s ease;
+}
+
+.category-link span {
+
+    font-size: 9px;
+}
+
+.category-link.active {
+
+    opacity: 1;
+
+    transform: translateX(8px);
+}
+
+.category-link.active::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -12px;
+
+    width: 4px;
+
+    height: 22px;
+
+    background: var(--red);
+}
+
+
+/* ==================================================
+   BAUHAUS BACKGROUND SYSTEM
+==================================================
+
+   These shapes are fixed behind the website.
+   They create the abstract Bauhaus atmosphere.
+================================================== */
+
+.bauhaus-shape {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* Large red circle */
+
+.shape-circle {
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    right: 7%;
+
+    top: 18%;
+
+    opacity: .85;
+}
+
+
+/* Yellow square */
+
+.shape-square {
+
+    width: 110px;
+
+    height: 110px;
+
+    background: var(--yellow);
+
+    left: 8%;
+
+    bottom: 12%;
+
+    transform: rotate(12deg);
+
+    opacity: .8;
+}
+
+
+/* Blue diagonal line */
+
+.shape-line {
+
+    width: 190px;
+
+    height: 13px;
+
+    background: var(--blue);
+
+    right: 5%;
+
+    bottom: 25%;
+
+    transform: rotate(-45deg);
+
+    opacity: .8;
+}
+
+
+/* ==================================================
+   ADDITIONAL BAUHAUS SHAPES
+
+   These use pseudo-elements so you don't need
+   additional HTML.
+================================================== */
+
+
+/* Orange/Red semicircle */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 170px;
+
+    height: 85px;
+
+    background: var(--red);
+
+    border-radius: 170px 170px 0 0;
+
+    left: -35px;
+
+    top: 43%;
+
+    transform: rotate(90deg);
+
+    opacity: .7;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+/* Blue circle */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    right: 17%;
+
+    top: 67%;
+
+    opacity: .7;
+
+    z-index: -2;
+
+    pointer-events: none;
+}
+
+
+/* Extra geometric shapes */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+
+    height: 90px;
+
+    border: 10px solid var(--black);
+
+    right: 17%;
+
+    top: 28%;
+
+    transform: rotate(45deg);
+
+    opacity: .12;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+.about::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+
+    height: 120px;
+
+    border-radius: 50%;
+
+    background: var(--yellow);
+
+    right: 4%;
+
+    bottom: 15%;
+
+    opacity: .35;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+.gallery-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 220px;
+
+    background: var(--red);
+
+    left: 4%;
+
+    top: 25%;
+
+    transform: rotate(35deg);
+
+    opacity: .5;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+.achievements::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    background: var(--blue);
+
+    right: 8%;
+
+    top: 20%;
+
+    transform: rotate(45deg);
+
+    opacity: .18;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+
+    min-height: 100vh;
+
+    padding:
+        150px 10vw 70px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.hero-small {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+
+    font-size: clamp(70px, 13vw, 210px);
+
+    line-height: .78;
+
+    letter-spacing: -8px;
+
+    font-weight: 900;
+}
+
+.hero h1 span {
+
+    display: block;
+
+    margin-left: 12vw;
+
+    color: var(--red);
+}
+
+.hero-bottom {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    max-width: 900px;
+}
+
+.hero-bottom p {
+
+    max-width: 280px;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+.scroll-indicator {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==================================================
+   GENERAL SECTION
+================================================== */
+
+.section {
+
+    padding: 15vh 10vw;
+
+    position: relative;
+}
+
+.section-number {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    margin-bottom: 60px;
+}
+
+.eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+}
+
+
+/* ==================================================
+   ABOUT
+================================================== */
+
+.about-content {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10vw;
+}
+
+.about h2 {
+
+    font-size: clamp(70px, 10vw, 150px);
+
+    line-height: .75;
+
+    letter-spacing: -6px;
+}
+
+.about-text {
+
+    padding-top: 20px;
+
+    max-width: 500px;
+}
+
+.about-text>p {
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+.info-grid {
+
+    border-top: var(--border);
+
+    margin-top: 60px;
+}
+
+.info-grid>div {
+
+    border-bottom: var(--border);
+
+    padding: 18px 0;
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    gap: 20px;
+}
+
+.info-grid span {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    opacity: .5;
+}
+
+.info-grid strong {
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   GALLERY
+================================================== */
+
+.gallery-section {
+
+    padding:
+        15vh 10vw 20vh;
+
+    position: relative;
+}
+
+.gallery-heading {
+
+    margin-bottom: 20vh;
+}
+
+.gallery-heading h2 {
+
+    font-size: clamp(80px, 13vw, 190px);
+
+    line-height: .75;
+
+    letter-spacing: -8px;
+}
+
+
+/* ==================================================
+   ARTWORK CONTAINER
+================================================== */
+
+.artwork-container {
+
+    width: 100%;
+
+    margin: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+}
+
+/* ==================================================
+   ARTWORK COLLECTION SECTIONS
+================================================== */
+
+.artwork-section {
+
+    position: relative;
+
+    width: 100vw;
+
+    margin-left: calc(50% - 50vw);
+
+    padding:
+
+        12vh 10vw 18vh;
+
+    background: var(--section-color);
+
+    transition:
+
+        background .6s ease,
+
+        padding .5s ease;
+}
+
+
+/* ==================================================
+   SECTION HEADER
+================================================== */
+
+.artwork-section-header {
+
+    max-width: 1100px;
+
+    margin: 0 auto 12vh;
+
+    position: relative;
+}
+
+
+/* ==================================================
+   SMALL TOP LINE
+================================================== */
+
+.section-heading-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+
+.section-heading-top .section-number {
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    margin: 0;
+}
+
+
+.section-label {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+}
+
+
+/* ==================================================
+   SECTION TITLE
+================================================== */
+
+.artwork-section-header h2 {
+
+    font-size: clamp(65px,
+
+            11vw,
+
+            160px);
+
+    line-height: .75;
+
+    letter-spacing: -7px;
+
+    font-weight: 900;
+
+    max-width: 1000px;
+
+    margin-bottom: 45px;
+}
+
+
+/* ==================================================
+   SECTION DESCRIPTION
+================================================== */
+
+.section-description {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    max-width: 850px;
+}
+
+
+.section-description p {
+
+    max-width: 420px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   COLLAPSE BUTTON
+================================================== */
+
+.collapse-button {
+
+    border: 2px solid #111;
+    background: transparent;
+    padding: 12px 18px;
+    min-width: 125px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition:
+        background .25s ease,
+        color .25s ease;
+}
+
+
+.collapse-button strong {
+
+    font-size: 18px;
+    line-height: .5;
+}
+
+
+.collapse-button:hover {
+
+    background: #111;
+    color: white;
+}
+
+/* ==================================================
+   ARCHIVE INVESTIGATION BOARD
+================================================== */
+
+.archive-board {
+
+    position: relative;
+
+    width: min(1200px,
+            88vw);
+
+    min-height: 850px;
+
+    margin: 0 auto;
+
+    padding: 60px;
+
+    background: #f5f1e8;
+
+    border: 3px solid #111;
+
+    box-shadow:
+        18px 18px 0 #111;
+
+    display: block;
+
+    overflow: hidden;
+
+}
+
+
+/* ==================================================
+   ARCHIVE PIECES
+================================================== */
+
+.archive-board .archive-piece {
+
+    position: absolute;
+
+    width: auto;
+
+    height: auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    transition:
+
+        transform .4s ease,
+
+        filter .3s ease;
+}
+
+
+/* ==================================================
+   ARCHIVE IMAGE
+================================================== */
+
+.archive-board .archive-piece .artwork-image-wrapper {
+
+    width: auto;
+
+    height: auto;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    overflow: visible;
+}
+
+
+/* ==================================================
+   ARCHIVE ARTWORK SIZE
+================================================== */
+
+.archive-board .archive-piece .artwork-image-wrapper img {
+
+    width: auto;
+
+    max-width: 280px;
+
+    max-height: 280px;
+
+    object-fit: contain;
+
+    display: block;
+
+    border: 2px solid #111;
+
+    box-shadow:
+        6px 6px 0 rgba(17, 17, 17, .12);
+}
+
+
+/* ==================================================
+   REMOVE NORMAL ARTWORK HOVER EFFECT
+================================================== */
+
+.archive-board .archive-piece:hover {
+
+    z-index: 20;
+
+}
+
+
+.archive-board .archive-piece:hover img {
+
+    transform:
+        scale(1.04) rotate(0deg);
+
+    filter: none;
+}
+
+
+/* ==================================================
+   ARCHIVE OVERLAY
+================================================== */
+
+.archive-board .archive-piece .artwork-overlay {
+
+    display: none;
+
+}
+
+
+/* ==================================================
+   RANDOM POSITIONS
+================================================== */
+
+.archive-piece:nth-child(1) {
+
+    top: 70px;
+    left: 90px;
+
+    transform: rotate(-6deg);
+}
+
+
+.archive-piece:nth-child(2) {
+
+    top: 55px;
+    right: 180px;
+
+    transform: rotate(4deg);
+}
+
+
+.archive-piece:nth-child(3) {
+
+    top: 230px;
+    left: 260px;
+
+    transform: rotate(3deg);
+}
+
+
+.archive-piece:nth-child(4) {
+
+    top: 260px;
+    right: 100px;
+
+    transform: rotate(-5deg);
+}
+
+
+.archive-piece:nth-child(5) {
+
+    bottom: 70px;
+    left: 130px;
+
+    transform: rotate(5deg);
+}
+
+
+.archive-piece:nth-child(6) {
+
+    bottom: 55px;
+    right: 280px;
+
+    transform: rotate(-4deg);
+}
+
+
+.archive-piece:nth-child(7) {
+
+    top: 190px;
+    left: 45px;
+
+    transform: rotate(-3deg);
+}
+
+
+.archive-piece:nth-child(8) {
+
+    bottom: 130px;
+    right: 55px;
+
+    transform: rotate(7deg);
+}
+
+
+/* ==================================================
+   ARCHIVE HOVER
+================================================== */
+
+.archive-piece:hover {
+
+    transform:
+        scale(1.08) rotate(0deg) !important;
+
+}
+
+
+/* ==================================================
+   ARCHIVE COLLAPSED STATE
+================================================== */
+
+.artwork-section.collapsed .archive-board {
+
+    display: none !important;
+
+}
+
+/* ==================================================
+   ARTWORKS INSIDE SECTION
+================================================== */
+
+.section-artworks {
+
+    width: min(900px,
+
+            75vw);
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20vh;
+
+    transition:
+
+        opacity .4s ease,
+
+        max-height .7s ease;
+}
+
+
+/* ==================================================
+   COLLAPSED SECTION
+================================================== */
+
+.artwork-section.collapsed {
+
+    padding-bottom: 10vh;
+}
+
+
+.artwork-section.collapsed .section-artworks {
+
+    display: none;
+}
+
+
+/* ==================================================
+   SECTION COLOR DETAILS
+================================================== */
+
+/*
+    Small black geometric accent
+*/
+
+.artwork-section::before {
+
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    right: 8%;
+    top: 12%;
+    border: 8px solid #111;
+    transform: rotate(45deg);
+    opacity: .15;
+    pointer-events: none;
+}
+
+
+/*
+    Circle accent
+*/
+
+.artwork-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 45px;
+
+    height: 45px;
+
+    left: 5%;
+
+    bottom: 10%;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    opacity: .12;
+
+    pointer-events: none;
+}
+
+
+/* ==================================================
+   ARTWORK
+================================================== */
+
+.artwork {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    transition:
+
+        transform .7s ease,
+
+        opacity .7s ease,
+
+        filter .7s ease;
+}
+
+
+/*
+    Inactive artwork
+*/
+
+.artwork:not(.active) {
+
+    filter: grayscale(100%);
+
+    opacity: .5;
+
+    transform: scale(.82);
+}
+
+
+/*
+    Active artwork
+*/
+
+.artwork.active {
+
+    filter: grayscale(1%);
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+
+/* ==================================================
+   ARTWORK CANVAS / FRAME
+
+   IMPORTANT:
+
+   This is the large white border around your
+   artwork.
+
+   Increase padding if you want an even bigger
+   canvas effect.
+================================================== */
+
+.artwork-image-wrapper {
+
+    position: relative;
+
+    width: fit-content;
+
+    max-width: 100%;
+
+    padding: 55px;
+
+    background: #ffffff;
+
+    /*
+        Sharp black edge around the artwork frame
+    */
+
+    border: 3px solid #111111;
+
+    /*
+        Small offset creates a physical-print effect
+    */
+
+    box-shadow:
+        12px 12px 0 #111111;
+
+    transition:
+
+        box-shadow .5s ease,
+
+        transform .5s ease;
+}
+
+
+/*
+    Actual artwork
+*/
+
+.artwork img {
+
+    width: auto;
+
+    max-width: min(65vw, 720px);
+
+    max-height: 72vh;
+
+    height: auto;
+
+    object-fit: contain;
+
+    /*
+        Sharp black border directly around image
+    */
+
+    border: 3px solid #111111;
+
+    transition:
+
+        transform .5s ease;
+}
+
+
+/* ==================================================
+   ARTWORK ACTIVE FRAME
+================================================== */
+
+.artwork.active .artwork-image-wrapper {
+
+    box-shadow:
+        16px 16px 0 #111111;
+
+}
+
+
+/* ==================================================
+   ARTWORK HOVER
+
+   Slight physical movement
+================================================== */
+
+.artwork:hover .artwork-image-wrapper {
+
+    transform: translate(-3px, -3px);
+
+}
+
+
+/* ==================================================
+   ARTWORK NUMBER
+================================================== */
+
+.artwork-number {
+
+    position: absolute;
+
+    left: -65px;
+
+    top: 20px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+/* ==================================================
+   ARTWORK OVERLAY
+
+   IMPORTANT CHANGE:
+
+   Instead of a solid black overlay,
+   this creates a transparent-to-black gradient
+   from the bottom.
+
+   Your artwork remains visible.
+================================================== */
+
+.artwork-overlay {
+
+    position: absolute;
+
+    /*
+        Match the image area rather than the entire
+        white canvas.
+    */
+
+    left: 58px;
+
+    right: 58px;
+
+    top: 58px;
+
+    bottom: 58px;
+
+    /*
+        Transparent at top
+        Black at bottom
+    */
+
+    background:
+
+        linear-gradient(to bottom,
+
+            rgba(0, 0, 0, 0) 35%,
+
+            rgba(0, 0, 0, .08) 50%,
+
+            rgba(0, 0, 0, .45) 75%,
+
+            rgba(0, 0, 0, .92) 100%);
+
+    display: flex;
+
+    align-items: end;
+
+    padding: 35px;
+
+    opacity: 0;
+
+    transition: opacity .4s ease;
+
+    pointer-events: none;
+}
+
+
+/*
+    Hover makes the gradient appear
+*/
+
+.artwork:hover .artwork-overlay {
+
+    opacity: 1;
+}
+
+
+/* ==================================================
+   ARTWORK INFORMATION
+================================================== */
+
+.artwork-info {
+
+    color: white;
+
+    transform: translateY(15px);
+
+    opacity: 0;
+
+    transition:
+
+        transform .4s ease,
+
+        opacity .4s ease;
+}
+
+
+/*
+    Text rises from bottom when hovered
+*/
+
+.artwork:hover .artwork-info {
+
+    transform: translateY(0);
+
+    opacity: 1;
+}
+
+
+.artwork-info span {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    opacity: .75;
+}
+
+
+.artwork-info h3 {
+
+    font-size: 30px;
+
+    line-height: 1;
+
+    margin: 8px 0;
+}
+
+
+.artwork-info p {
+
+    font-size: 12px;
+
+    opacity: .75;
+}
+
+
+/* ==================================================
+   ACHIEVEMENTS
+================================================== */
+
+.achievement-content {
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+.achievement-content h2 {
+    font-size: clamp(55px, 8vw, 120px);
+    line-height: 0.82;
+    letter-spacing: -4px;
+    margin-bottom: 100px;
+
+    width: 100%;
+    max-width: 900px;
+
+    /* overflow-wrap: break-word; */
+    word-break: normal;
+}
+
+.achievement-list {
+
+    border-top: var(--border);
+}
+
+.achievement {
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    gap: 30px;
+
+    padding: 30px 0;
+
+    border-bottom: var(--border);
+}
+
+.achievement>span {
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+.achievement h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+.achievement p {
+
+    font-size: 13px;
+
+    opacity: .6;
+}
+
+
+/* ==================================================
+   ENDING
+================================================== */
+
+.ending {
+
+    min-height: 100vh;
+
+    padding: 12vh 10vw;
+
+    background: var(--black);
+
+    color: white;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.ending h2 {
+
+    font-size: clamp(100px, 18vw, 250px);
+
+    line-height: .72;
+
+    letter-spacing: -12px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.ending h2 span {
+
+    color: var(--red);
+}
+
+.ending-text {
+
+    margin-top: 60px;
+
+    max-width: 300px;
+
+    line-height: 1.5;
+}
+
+.socials {
+
+    margin-top: 80px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+.socials a {
+
+    border: 1px solid white;
+
+    padding: 12px 18px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    transition:
+
+        background .3s ease,
+
+        color .3s ease;
+}
+
+.socials a:hover {
+
+    background: white;
+
+    color: black;
+}
+
+.copyright {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 10vw;
+
+    font-size: 9px;
+
+    opacity: .5;
+}
+
+.ending-shape {
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: var(--yellow);
+
+    right: -100px;
+
+    top: -100px;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 800px) {
+
+    .topbar {
+
+        padding: 20px;
+    }
+
+
+    .topbar nav {
+
+        display: none;
+    }
+
+
+    .category-nav {
+
+        left: 20px;
+
+        top: auto;
+
+        bottom: 20px;
+
+        transform: none;
+
+        flex-direction: row;
+
+        width: calc(100% - 40px);
+
+        justify-content: space-between;
+
+        background: rgba(244, 241, 232, .9);
+
+        padding: 12px;
+
+        border: 1px solid #111;
+
+        backdrop-filter: blur(10px);
+    }
+
+
+    .category-label {
+
+        display: none;
+    }
+
+
+    .category-link {
+
+        font-size: 8px;
+    }
+
+
+    .category-link.active {
+
+        transform: none;
+    }
+
+
+    .category-link.active::before {
+
+        display: none;
+    }
+
+
+    .hero {
+
+        padding:
+
+            120px 25px 50px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 20vw;
+
+        letter-spacing: -4px;
+    }
+
+
+    .hero-bottom {
+
+        flex-direction: column;
+
+        align-items: start;
+
+        gap: 30px;
+    }
+
+
+    .section {
+
+        padding:
+
+            12vh 25px;
+    }
+
+
+    .about-content {
+
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+
+    .about h2 {
+
+        font-size: 22vw;
+    }
+
+
+    .gallery-section {
+
+        padding:
+
+            12vh 25px 15vh;
+    }
+
+
+    .gallery-heading h2 {
+
+        font-size: 22vw;
+    }
+
+
+    .artwork-container {
+
+        width: 100%;
+
+        gap: 15vh;
+    }
+
+
+    /*
+        Smaller canvas padding on mobile
+    */
+
+    .artwork-image-wrapper {
+
+        padding: 25px;
+
+        max-width: 85vw;
+
+        box-shadow:
+            8px 8px 0 #111;
+    }
+
+
+    .artwork img {
+
+        max-width: 80vw;
+
+        max-height: 65vh;
+
+        border-width: 2px;
+    }
+
+
+    /*
+        Gradient must match mobile padding
+    */
+
+    .artwork-overlay {
+
+        left: 27px;
+
+        right: 27px;
+
+        top: 27px;
+
+        bottom: 27px;
+
+        padding: 20px;
+    }
+
+
+    .artwork-number {
+
+        left: -25px;
+    }
+
+
+    .artwork-info h3 {
+
+        font-size: 20px;
+    }
+
+
+    .achievement-content h2 {
+        font-size: clamp(55px, 8vw, 120px);
+        line-height: .82;
+        letter-spacing: -5px;
+        margin-bottom: 100px;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+
+    .ending {
+
+        padding: 12vh 25px;
+    }
+
+
+    .ending h2 {
+
+        font-size: 24vw;
+
+        letter-spacing: -5px;
+    }
+
+}
+
+/* ==================================================
+   CUSTOM DYNAMIC CURSOR
+================================================== */
+
+.custom-cursor {
+
+    background: white;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    /*
+        THIS IS THE IMPORTANT PART.
+
+        The cursor automatically inverts whatever
+        is underneath it.
+
+        Black text → white
+        White background → black
+        Red background → cyan-ish inversion
+        Blue background → yellow-ish inversion
+    */
+
+    mix-blend-mode: difference;
+
+    transform:
+        translate3d(-50%, -50%, 0) scale(1);
+
+    transition:
+        width .35s cubic-bezier(.16, 1, .3, 1),
+        height .35s cubic-bezier(.16, 1, .3, 1),
+        transform .35s cubic-bezier(.16, 1, .3, 1);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ==================================================
+   CURSOR TEXT
+================================================== */
+
+.cursor-text {
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    opacity: 0;
+
+    transform: scale(.5);
+
+    transition:
+
+        opacity .25s ease,
+
+        transform .35s cubic-bezier(.16, 1, .3, 1);
+}
+
+
+/* ==================================================
+   BIG CURSOR
+   Buttons + links
+================================================== */
+
+.custom-cursor.cursor-large {
+
+    width: 75px;
+
+    height: 75px;
+}
+
+
+/* ==================================================
+   HUGE CURSOR
+   Headings
+================================================== */
+
+.custom-cursor.cursor-heading {
+
+    width: 100px;
+
+    height: 100px;
+}
+
+
+/* ==================================================
+   CURSOR TEXT ACTIVE
+================================================== */
+
+.custom-cursor.cursor-large .cursor-text,
+.custom-cursor.cursor-heading .cursor-text {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* ==================================================
+   HEADING CURSOR
+================================================== */
+
+.custom-cursor.cursor-heading .cursor-text::after {
+
+    content: "VIEW";
+
+}
+
+
+/* ==================================================
+   BUTTON / LINK CURSOR
+================================================== */
+
+.custom-cursor.cursor-large .cursor-text::after {
+
+    content: "OPEN";
+
+}
+
+
+/* ==================================================
+   HIDE NORMAL CURSOR
+================================================== */
+
+body.custom-cursor-enabled,
+body.custom-cursor-enabled * {
+
+    cursor: none !important;
+}
+
+
+/* ==================================================
+   MOBILE
+
+   Don't use custom cursor on touch devices.
+================================================== */
+
+@media (max-width: 800px) {
+
+    .custom-cursor {
+
+        display: none;
+    }
+
+}
+
+.custom-cursor.cursor-artwork {
+
+    width: 90px;
+
+    height: 90px;
+}
+
+.custom-cursor.cursor-artwork .cursor-text::after {
+
+    content: "VIEW";
+}
+
+/* ==================================================
+   ARCHIVE BOARD DETAILS
+================================================== */
+
+.archive-board::before {
+
+    content: "ARCHIVE / FIELD NOTES";
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 25px;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    opacity: .45;
+}
+
+.archive-board::after {
+
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 2px solid #111;
+    border-radius: 50%;
+    right: -50px;
+    top: -50px;
+    opacity: .12;
+
+}
+
+/* ==================================================
+   ARCHIVE BOARD - OVERRIDE MAIN ARTWORK SPACING
+================================================== */
+
+.archive-board {
+
+    display: block;
+
+    width: min(1100px, 85vw);
+
+    min-height: 700px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.archive-board .archive-piece {
+
+    position: absolute;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+}
+
+/* ==================================================
+   ARCHIVES IGNORE MAIN ARTWORK STATES
+================================================== */
+
+.archive-board .archive-piece,
+.archive-board .archive-piece.active,
+.archive-board .archive-piece:not(.active) {
+
+    opacity: 1 !important;
+
+    filter: none !important;
+
+    transform: none;
+
+    transition:
+        transform .3s ease;
+}
+
+/* ==================================================
+   CREATIVE DESK DECORATIONS
+================================================== */
+
+.archive-board .desk-note {
+
+    position: absolute;
+
+    font-family:
+        "Comic Sans MS",
+        "Trebuchet MS",
+        sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.2;
+
+    color: #111;
+
+    opacity: .7;
+
+    transform: rotate(-5deg);
+
+    pointer-events: none;
+}
+
+/* ==================================================
+   DESK NOTE POSITIONS
+================================================== */
+
+.archive-board .note-one {
+
+    top: 120px;
+
+    left: 430px;
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.archive-board .note-two {
+
+    top: 360px;
+
+    left: 120px;
+
+    transform:
+        rotate(5deg);
+}
+
+
+.archive-board .note-three {
+
+    top: 110px;
+
+    right: 80px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transform:
+        rotate(7deg);
+}
+
+
+.archive-board .note-four {
+
+    top: 480px;
+
+    left: 48%;
+
+    font-size: 30px;
+
+    opacity: .35;
+
+    transform:
+        rotate(15deg);
+}
+
+
+.archive-board .note-five {
+
+    bottom: 110px;
+
+    left: 420px;
+
+    transform:
+        rotate(-4deg);
+}
+
+
+.archive-board .note-six {
+
+    bottom: 250px;
+
+    right: 110px;
+
+    font-size: 18px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+.archive-board .note-seven {
+
+    bottom: 70px;
+
+    right: 200px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    transform:
+        rotate(-6deg);
+}
+
+/* ==================================================
+   RANDOM SCRIBBLE ELEMENTS
+================================================== */
+
+.archive-board .scribble {
+
+    position: absolute;
+
+    width: 100px;
+
+    height: 60px;
+
+    border: 2px solid #111;
+
+    border-radius: 50%;
+
+    opacity: .25;
+
+    pointer-events: none;
+}
+
+
+.archive-board .scribble-one {
+
+    top: 200px;
+
+    right: 70px;
+
+    transform:
+        rotate(-20deg) scaleY(.6);
+}
+
+
+.archive-board .scribble-two {
+
+    bottom: 180px;
+
+    left: 60px;
+
+    transform:
+        rotate(15deg) scaleY(.5);
+}
+
+/* ==================================================
+   PAPER SCRAPS
+================================================== */
+
+.archive-board .paper-scrap {
+
+    position: absolute;
+
+    width: 130px;
+
+    height: 85px;
+
+    background: #fffdf5;
+
+    border: 1px solid rgba(17, 17, 17, .3);
+
+    box-shadow:
+        3px 4px 0 rgba(17, 17, 17, .08);
+
+    pointer-events: none;
+}
+
+
+.archive-board .scrap-one {
+
+    top: 40px;
+
+    left: 260px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+.archive-board .scrap-two {
+
+    bottom: 35px;
+
+    right: 80px;
+
+    transform:
+        rotate(-6deg);
+}
+
+/* ==================================================
+   TAPE
+================================================== */
+
+.archive-board .archive-piece::before {
+
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 16px;
+    background: rgba(255,
+            255,
+            255,
+            .55);
+
+    top: -8px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%) rotate(-3deg);
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+@media (max-width: 800px) {
+
+    /* ==============================================
+       ARCHIVE BOARD — MOBILE
+    ============================================== */
+
+    .archive-board {
+
+        width: 92vw;
+
+        min-height: 850px;
+
+        padding: 30px;
+
+        box-shadow:
+            10px 10px 0 #111;
+    }
+
+
+    .archive-board .archive-piece .artwork-image-wrapper img {
+
+        max-width: 190px;
+
+        max-height: 190px;
+    }
+
+
+    .archive-piece:nth-child(1) {
+
+        top: 70px;
+
+        left: 25px;
+    }
+
+
+    .archive-piece:nth-child(2) {
+
+        top: 80px;
+
+        right: 20px;
+    }
+
+
+    .archive-piece:nth-child(3) {
+
+        top: 270px;
+
+        left: 80px;
+    }
+
+
+    .archive-piece:nth-child(4) {
+
+        top: 390px;
+
+        right: 20px;
+    }
+
+
+    .archive-piece:nth-child(5) {
+
+        top: 530px;
+
+        left: 25px;
+    }
+
+
+    .archive-piece:nth-child(6) {
+
+        top: 650px;
+
+        right: 70px;
+    }
+
+
+    .archive-piece:nth-child(7) {
+
+        top: 430px;
+
+        left: 20px;
+    }
+
+
+    /* Hide some decorative elements */
+
+    .archive-board .note-three,
+    .archive-board .note-four,
+    .archive-board .note-six {
+
+        display: none;
+    }
+
+
+    .archive-board .paper-scrap {
+
+        opacity: .6;
+    }
+
+}
+
+/* Hide artwork numbering inside Archive board */
+
+.archive-board .artwork-number {
+    display: none !important;
+}
