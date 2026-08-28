@@ -577,6 +577,221 @@ body::after {
    ABOUT
 ================================================== */
 
+/* =========================================================
+   ABOUT SECTION — TWO COLUMN LAYOUT
+========================================================= */
+
+.about {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    column-gap: 80px;
+
+    align-items: start;
+}
+
+.about {
+    width: auto;
+    margin-left: 12vw;
+    margin-right: 16vw;
+}
+
+/* =========================================================
+   LEFT — PHOTO + NAME
+========================================================= */
+
+.about-left {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+@property --a {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@property --p {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+}
+
+@property --l {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 0px;
+}
+
+
+/* Profile picture */
+
+.about-left .profile-photo {
+    width: 400px;
+    height: 400px;
+
+    /* white canvas around photo */
+    padding: 25px;
+
+    background: #fff;
+
+    box-sizing: border-box;
+
+    position: relative;
+
+    margin: 20px auto 40px;
+
+    /* animation variables */
+    --a: 0deg;
+    --p: 0%;
+    --l: 0px;
+
+    /* animated black border */
+    border: solid transparent;
+
+    border-width: var(--l);
+
+    border-image-source:
+        linear-gradient(
+            var(--a),
+            #111 var(--p),
+            transparent var(--p)
+        );
+
+    border-image-slice: 1;
+
+    transition:
+        --a 0.8s ease,
+        --p 0.5s ease,
+        --l 0.3s ease;
+}
+
+/*hover effect*/
+
+.about-left .profile-photo:hover {
+    --l: 5px;
+    --p: 10%;
+    --a: 360deg;
+}
+
+/* Actual image */
+
+.about-left .profile-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* Name */
+
+.about-left h1 {
+
+    margin: 0;
+
+    font-size: clamp(
+        5rem,
+        8vw,
+        9rem
+    );
+
+    line-height: .82;
+
+    letter-spacing: -0.07em;
+
+    text-align: center;
+}
+
+/* =========================================================
+   RIGHT — ABOUT INFORMATION
+========================================================= */
+
+.about-right {
+
+    width: 100%;
+
+    padding-top: 20px;
+
+    font-size: 1.2rem;
+
+    line-height: 1.45;
+}
+
+
+/* Intro paragraphs */
+
+.about-intro p {
+
+    margin: 0 0 30px;
+}
+
+
+/* =========================================================
+   COLLEGE / COURSE / FORTE
+========================================================= */
+
+.about-details {
+
+    margin-top: 65px;
+}
+
+
+.about-detail-row {
+
+    display: grid;
+
+    grid-template-columns:
+        120px 1fr;
+
+    gap: 25px;
+
+    padding: 25px 0;
+
+    border-top: 2px solid #111;
+}
+
+
+.about-detail-row:last-child {
+
+    border-bottom: 2px solid #111;
+}
+
+
+.about-detail-row span {
+
+    font-size: .7rem;
+
+    font-weight: 900;
+
+    letter-spacing: .05em;
+
+    opacity: .55;
+}
+
+
+.about-detail-row strong {
+
+    font-size: 1rem;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+}
+
 .about-content {
 
     display: grid;
@@ -1661,219 +1876,6 @@ body::after {
    MOBILE
 ================================================== */
 
-@media (max-width: 800px) {
-
-    .topbar {
-
-        padding: 20px;
-    }
-
-
-    .topbar nav {
-
-        display: none;
-    }
-
-
-    .category-nav {
-
-        left: 20px;
-
-        top: auto;
-
-        bottom: 20px;
-
-        transform: none;
-
-        flex-direction: row;
-
-        width: calc(100% - 40px);
-
-        justify-content: space-between;
-
-        background: rgba(244, 241, 232, .9);
-
-        padding: 12px;
-
-        border: 1px solid #111;
-
-        backdrop-filter: blur(10px);
-    }
-
-
-    .category-label {
-
-        display: none;
-    }
-
-
-    .category-link {
-
-        font-size: 8px;
-    }
-
-
-    .category-link.active {
-
-        transform: none;
-    }
-
-
-    .category-link.active::before {
-
-        display: none;
-    }
-
-
-    .hero {
-
-        padding:
-
-            120px 25px 50px;
-    }
-
-
-    .hero h1 {
-
-        font-size: 20vw;
-
-        letter-spacing: -4px;
-    }
-
-
-    .hero-bottom {
-
-        flex-direction: column;
-
-        align-items: start;
-
-        gap: 30px;
-    }
-
-
-    .section {
-
-        padding:
-
-            12vh 25px;
-    }
-
-
-    .about-content {
-
-        grid-template-columns: 1fr;
-
-        gap: 60px;
-    }
-
-
-    .about h2 {
-
-        font-size: 22vw;
-    }
-
-
-    .gallery-section {
-
-        padding:
-
-            12vh 25px 15vh;
-    }
-
-
-    .gallery-heading h2 {
-
-        font-size: 22vw;
-    }
-
-
-    .artwork-container {
-
-        width: 100%;
-
-        gap: 15vh;
-    }
-
-
-    /*
-        Smaller canvas padding on mobile
-    */
-
-    .artwork-image-wrapper {
-
-        padding: 25px;
-
-        max-width: 85vw;
-
-        box-shadow:
-            8px 8px 0 #111;
-    }
-
-
-    .artwork img {
-
-        max-width: 80vw;
-
-        max-height: 65vh;
-
-        border-width: 2px;
-    }
-
-
-    /*
-        Gradient must match mobile padding
-    */
-
-    .artwork-overlay {
-
-        left: 27px;
-
-        right: 27px;
-
-        top: 27px;
-
-        bottom: 27px;
-
-        padding: 20px;
-    }
-
-
-    .artwork-number {
-
-        left: -25px;
-    }
-
-
-    .artwork-info h3 {
-
-        font-size: 20px;
-    }
-
-
-    .achievement-content h2 {
-        font-size: clamp(55px, 8vw, 120px);
-        line-height: .82;
-        letter-spacing: -5px;
-        margin-bottom: 100px;
-        max-width: 100%;
-        overflow-wrap: break-word;
-    }
-
-
-    .ending {
-
-        padding: 12vh 25px;
-    }
-
-
-    .ending h2 {
-
-        font-size: 24vw;
-
-        letter-spacing: -5px;
-    }
-
-}
 
 /* ==================================================
    CUSTOM DYNAMIC CURSOR
@@ -2026,21 +2028,6 @@ body.custom-cursor-enabled * {
     cursor: none !important;
 }
 
-
-/* ==================================================
-   MOBILE
-
-   Don't use custom cursor on touch devices.
-================================================== */
-
-@media (max-width: 800px) {
-
-    .custom-cursor {
-
-        display: none;
-    }
-
-}
 
 .custom-cursor.cursor-artwork {
 
@@ -2373,108 +2360,551 @@ body.custom-cursor-enabled * {
     pointer-events: none;
 }
 
-@media (max-width: 800px) {
-
-    /* ==============================================
-       ARCHIVE BOARD — MOBILE
-    ============================================== */
-
-    .archive-board {
-
-        width: 92vw;
-
-        min-height: 850px;
-
-        padding: 30px;
-
-        box-shadow:
-            10px 10px 0 #111;
-    }
-
-
-    .archive-board .archive-piece .artwork-image-wrapper img {
-
-        max-width: 190px;
-
-        max-height: 190px;
-    }
-
-
-    .archive-piece:nth-child(1) {
-
-        top: 70px;
-
-        left: 25px;
-    }
-
-
-    .archive-piece:nth-child(2) {
-
-        top: 80px;
-
-        right: 20px;
-    }
-
-
-    .archive-piece:nth-child(3) {
-
-        top: 270px;
-
-        left: 80px;
-    }
-
-
-    .archive-piece:nth-child(4) {
-
-        top: 390px;
-
-        right: 20px;
-    }
-
-
-    .archive-piece:nth-child(5) {
-
-        top: 530px;
-
-        left: 25px;
-    }
-
-
-    .archive-piece:nth-child(6) {
-
-        top: 650px;
-
-        right: 70px;
-    }
-
-
-    .archive-piece:nth-child(7) {
-
-        top: 430px;
-
-        left: 20px;
-    }
-
-
-    /* Hide some decorative elements */
-
-    .archive-board .note-three,
-    .archive-board .note-four,
-    .archive-board .note-six {
-
-        display: none;
-    }
-
-
-    .archive-board .paper-scrap {
-
-        opacity: .6;
-    }
-
-}
-
 /* Hide artwork numbering inside Archive board */
 
 .archive-board .artwork-number {
     display: none !important;
+}
+
+/* ==================================================
+   MOBILE — CONSOLIDATED
+================================================== */
+
+@media (max-width: 800px) {
+
+    /* ---------- TOP NAV ---------- */
+
+    .topbar {
+        padding: 18px 20px;
+    }
+
+    .topbar nav {
+        display: none;
+    }
+
+
+    /* ---------- CATEGORY NAV ---------- */
+
+    .category-nav {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        top: auto;
+
+        width: auto;
+
+        transform: none;
+
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding: 12px;
+
+        background: rgba(244, 241, 232, .92);
+
+        border: 1px solid #111;
+
+        backdrop-filter: blur(10px);
+
+        gap: 5px;
+    }
+
+    .category-label {
+        display: none;
+    }
+
+    .category-link {
+        font-size: 8px;
+        gap: 5px;
+    }
+
+    .category-link span {
+        font-size: 8px;
+    }
+
+    .category-link.active {
+        transform: none;
+    }
+
+    .category-link.active::before {
+        display: none;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+        width: 100%;
+        min-height: 100svh;
+
+        padding: 120px 20px 60px;
+
+        overflow: hidden;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 18vw, 110px);
+
+        letter-spacing: -4px;
+
+        line-height: .8;
+
+        max-width: 100%;
+    }
+
+    .hero h1 span {
+        margin-left: 5vw;
+    }
+
+    .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 30px;
+
+        max-width: 100%;
+    }
+
+    .hero-bottom p {
+        max-width: 90%;
+        font-size: 14px;
+    }
+
+
+    /* ---------- GENERAL SECTIONS ---------- */
+
+    .section {
+        width: 100%;
+        padding: 12vh 20px;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about {
+        width: 100%;
+
+        margin: 0;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        column-gap: 0;
+
+        row-gap: 60px;
+    }
+
+    .about-left {
+        width: 100%;
+    }
+
+    .about-left .profile-photo {
+        width: min(75vw, 320px);
+        height: min(75vw, 320px);
+
+        padding: 18px;
+
+        margin: 20px auto 30px;
+    }
+
+    .about-left h1 {
+        font-size: clamp(55px, 17vw, 100px);
+
+        line-height: .82;
+
+        letter-spacing: -0.07em;
+
+        max-width: 100%;
+    }
+
+    .about-right {
+        width: 100%;
+
+        padding-top: 0;
+
+        font-size: 1rem;
+
+        line-height: 1.5;
+    }
+
+    .about-intro p {
+        margin-bottom: 25px;
+    }
+
+    .about-details {
+        margin-top: 45px;
+    }
+
+    .about-detail-row {
+        grid-template-columns: 80px 1fr;
+
+        gap: 15px;
+
+        padding: 20px 0;
+    }
+
+    .about-detail-row strong {
+        font-size: .9rem;
+    }
+
+
+    /* ---------- GALLERY ---------- */
+
+    .gallery-section {
+        width: 100%;
+
+        padding: 12vh 20px 15vh;
+
+        overflow: hidden;
+    }
+
+    .gallery-heading {
+        margin-bottom: 12vh;
+    }
+
+    .gallery-heading h2 {
+        font-size: clamp(55px, 18vw, 110px);
+
+        line-height: .78;
+
+        letter-spacing: -5px;
+
+        max-width: 100%;
+    }
+
+
+    /* ---------- ARTWORK SECTIONS ---------- */
+
+    .artwork-section {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 10vh 20px 15vh;
+
+        overflow: hidden;
+    }
+
+    .artwork-section-header {
+        width: 100%;
+
+        margin: 0 auto 8vh;
+    }
+
+    .section-heading-top {
+        gap: 12px;
+
+        margin-bottom: 25px;
+    }
+
+    .artwork-section-header h2 {
+        font-size: clamp(50px, 16vw, 100px);
+
+        line-height: .78;
+
+        letter-spacing: -5px;
+
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+    }
+
+    .section-description {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+        max-width: 100%;
+    }
+
+    .section-description p {
+        max-width: 100%;
+
+        font-size: 14px;
+    }
+
+
+    /* ---------- COLLAPSE BUTTON ---------- */
+
+    .collapse-button {
+        min-width: 120px;
+
+        padding: 10px 14px;
+    }
+
+
+    /* ---------- MAIN ARTWORKS ---------- */
+
+    .section-artworks {
+        width: 100%;
+
+        max-width: 100%;
+
+        gap: 12vh;
+    }
+
+    .artwork {
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+    .artwork-image-wrapper {
+        width: auto;
+
+        max-width: 90vw;
+
+        padding: 20px;
+
+        box-shadow: 8px 8px 0 #111;
+    }
+
+    .artwork img {
+        width: auto;
+
+        max-width: 78vw;
+
+        max-height: 65vh;
+
+        height: auto;
+
+        border-width: 2px;
+    }
+
+    .artwork-overlay {
+        left: 22px;
+        right: 22px;
+        top: 22px;
+        bottom: 22px;
+
+        padding: 18px;
+    }
+
+    .artwork-number {
+        left: -25px;
+        top: 10px;
+    }
+
+    .artwork-info h3 {
+        font-size: 20px;
+    }
+
+    .artwork-info p {
+        font-size: 11px;
+    }
+
+
+    /* ---------- ACHIEVEMENTS ---------- */
+
+    .achievement-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .achievement-content h2 {
+        font-size: clamp(48px, 15vw, 90px);
+
+        line-height: .82;
+
+        letter-spacing: -4px;
+
+        margin-bottom: 60px;
+
+        max-width: 100%;
+
+        overflow-wrap: anywhere;
+    }
+
+    .achievement {
+        grid-template-columns: 70px 1fr;
+
+        gap: 15px;
+
+        padding: 25px 0;
+    }
+
+    .achievement h3 {
+        font-size: 20px;
+    }
+
+    .achievement p {
+        font-size: 12px;
+    }
+
+
+    /* ---------- ENDING ---------- */
+
+    .ending {
+        width: 100%;
+
+        min-height: 100svh;
+
+        padding: 12vh 20px;
+
+        overflow: hidden;
+    }
+
+    .ending h2 {
+        font-size: clamp(70px, 23vw, 140px);
+
+        line-height: .75;
+
+        letter-spacing: -6px;
+
+        max-width: 100%;
+    }
+
+    .ending-text {
+        margin-top: 45px;
+    }
+
+    .socials {
+        margin-top: 55px;
+
+        gap: 10px;
+    }
+
+    .socials a {
+        padding: 10px 14px;
+    }
+
+    .copyright {
+        left: 20px;
+        bottom: 20px;
+    }
+
+
+    /* ---------- ARCHIVE BOARD ---------- */
+
+    .archive-board {
+        width: 100%;
+
+        min-height: 750px;
+
+        margin: 0;
+
+        padding: 25px;
+
+        box-shadow: 8px 8px 0 #111;
+
+        overflow: hidden;
+    }
+
+    .archive-board .archive-piece .artwork-image-wrapper img {
+        max-width: 140px;
+        max-height: 140px;
+    }
+
+    .archive-piece:nth-child(1) {
+        top: 70px;
+        left: 15px;
+    }
+
+    .archive-piece:nth-child(2) {
+        top: 70px;
+        right: 15px;
+    }
+
+    .archive-piece:nth-child(3) {
+        top: 240px;
+        left: 70px;
+    }
+
+    .archive-piece:nth-child(4) {
+        top: 360px;
+        right: 15px;
+    }
+
+    .archive-piece:nth-child(5) {
+        top: 500px;
+        left: 15px;
+    }
+
+    .archive-piece:nth-child(6) {
+        top: 610px;
+        right: 60px;
+    }
+
+    .archive-piece:nth-child(7) {
+        top: 400px;
+        left: 10px;
+    }
+
+    .archive-piece:nth-child(8) {
+        display: none;
+    }
+
+
+    /* Archive decorations */
+
+    .archive-board .note-three,
+    .archive-board .note-four,
+    .archive-board .note-six {
+        display: none;
+    }
+
+    .archive-board .paper-scrap {
+        opacity: .5;
+    }
+
+    .archive-board .artwork-number {
+        display: none !important;
+    }
+
+
+    /* ---------- CUSTOM CURSOR ---------- */
+
+    .custom-cursor {
+        display: none !important;
+    }
+
+    body.custom-cursor-enabled,
+    body.custom-cursor-enabled * {
+        cursor: auto !important;
+    }
+
+
+    /* ---------- BACKGROUND SHAPES ---------- */
+
+    .shape-circle {
+        width: 110px;
+        height: 110px;
+
+        right: -30px;
+        top: 18%;
+    }
+
+    .shape-square {
+        width: 75px;
+        height: 75px;
+
+        left: -15px;
+        bottom: 12%;
+    }
+
+    .shape-line {
+        width: 110px;
+        height: 8px;
+
+        right: -25px;
+        bottom: 25%;
+    }
+
+    body::before {
+        width: 120px;
+        height: 60px;
+
+        left: -50px;
+    }
+
+    body::after {
+        width: 45px;
+        height: 45px;
+
+        right: 5%;
+    }
+
 }
