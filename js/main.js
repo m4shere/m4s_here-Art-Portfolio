@@ -409,7 +409,7 @@ function createArtworkSections() {
                     },
 
                     {
-                        text: "maybe this?",
+                        text: "failed Artwork",
                         className: "note-two"
                     },
 
@@ -858,10 +858,10 @@ if (
        Buttons + links
     ------------------------------------------ */
 
-    const interactiveElements =
-        document.querySelectorAll(
-            "a, button"
-        );
+const interactiveElements =
+    document.querySelectorAll(
+        "a:not(.category-link), button:not(.category-link)"
+    );
 
 
     interactiveElements.forEach(
