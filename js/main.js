@@ -48,9 +48,9 @@ const sectionInfo = {
         description:
             "Studies, portraits, observations and drawings created through traditional sketching. Tools used: Finelines, Gel, Ball & Fountain pens, Graphite Pencils",
 
-        color: "#c79dfc",
+        color: "#f961fa",
 
-        darkColor: "#ab54f7"
+        darkColor: "#ff44ff"
     },
 
 
@@ -80,7 +80,7 @@ const sectionInfo = {
 
         color: "#0072e3",
 
-        darkColor: "#0058b3"
+        darkColor: "#2340f1"
     }
 
 };
